@@ -1,0 +1,28 @@
+{
+  "name": "mesto-project",
+  "version": "1.0.0",
+  "description": "learning Java Script",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enclosser/mesto-project-ff.git"
+  },
+  "author": "Andrey A",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enclosser/mesto-project-ff/issues"
+  },
+  "homepage": "https://github.com/enclosser/mesto-project-ff#readme",
+  "dependencies": {
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
