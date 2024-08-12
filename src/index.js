@@ -1,6 +1,6 @@
 import "./pages/index.css";
 import { initialCards } from "./components/initialCards.js";
-import { createCard, handleLikeButtonClick, handleDeleteButtonClick  } from "./components/cards.js";
+import { createCard, handleLikeButtonClick, handleDeleteButtonClick  } from "./components/card.js";
 import { openModal, closeModal } from "./components/modal.js";
 
 const modals = {
