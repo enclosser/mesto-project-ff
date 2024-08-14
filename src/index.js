@@ -78,7 +78,7 @@ function loadInitialInfo() {
 }
 
 function renderNewCard(cardData) {
-  const readyCard = addCard({ informationCard: cardData, informationMe: dataUserInfo });
+  const readyCard = addCard({ informationCard: cardData, informationMe: window.dataUserInfo });
   placesList.prepend(readyCard);
 }
 
