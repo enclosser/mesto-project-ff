@@ -1,7 +1,10 @@
 
+import { openModal, closeModal } from "./modal.js";
 import { deleteCard, addLike, removeLike } from "./api.js";
 
 export const cardTemplate = document.querySelector("#card-template").content;
+const popupDelete = document.querySelector(".delete__popup");
+const buttonPopupDelete = popupDelete.querySelector(".popup__button");
 
 function updateButtonState(button, text) {
   button.textContent = text;
