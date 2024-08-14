@@ -1,31 +1,9 @@
-
-import { openModal, closeModal } from "./modal.js";
-import { deleteCard, addLike, removeLike } from "./api.js";
+import { addLike, removeLike } from "./api.js";
 
 export const cardTemplate = document.querySelector("#card-template").content;
-const popupDelete = document.querySelector(".delete__popup");
-const buttonPopupDelete = popupDelete.querySelector(".popup__button");
 
 function updateButtonState(button, text) {
   button.textContent = text;
-}
-
-export function launchDeleteCard(event, cardId) {
-  const selectedCard = event.target.closest(".card");
-  openModal(popupDelete); // перенесен в `index.js`
-
-  buttonPopupDelete.addEventListener("click", async () => {
-    updateButtonState(buttonPopupDelete, "Удаление...");
-    try {
-      await deleteCard(cardId._id);
-      selectedCard.remove();
-      closeModal(popupDelete); // перенесен в `index.js`
-    } catch (err) {
-      console.log(err);
-    } finally {
-      updateButtonState(buttonPopupDelete, "Да");
-    }
-  }, { once: true });
 }
 
 export function likeCard(event, data, likeCounter) {

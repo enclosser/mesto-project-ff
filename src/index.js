@@ -1,5 +1,5 @@
 import "./pages/index.css";
-import { makeCard, likeCard, launchDeleteCard } from "./components/card.js";
+import { makeCard, likeCard } from "./components/card.js";
 import { openModal, closeModal } from "./components/modal.js";
 import { enableValidation, clearValidation } from "./components/validation.js";
 import {
@@ -8,6 +8,7 @@ import {
   updateUserServerInfo,
   createNewPost,
   changeAvatar,
+  deleteCard,
 } from "./components/api.js";
 
 // Объявление переменных:
@@ -24,6 +25,8 @@ const popupEdit = document.querySelector(".popup_type_edit");
 const popupNewCard = document.querySelector(".popup_type_new-card");
 const popupImage = document.querySelector(".popup_type_image");
 const popupNewAvatar = document.querySelector(".popup_type_edit_avatar");
+const popupDelete = document.querySelector(".delete__popup"); // Добавлено
+const buttonPopupDelete = popupDelete.querySelector(".popup__button"); // Добавлено
 const selectedPopupImage = popupImage.querySelector(".popup__image");
 const popupCaption = popupImage.querySelector(".popup__caption");
 
@@ -100,6 +103,29 @@ function handleFormSubmit(button, apiFunction, onSuccess, onError) {
         button.textContent = "Сохранить";
       });
   };
+}
+
+function handleDelete(selectedCard, cardId) {
+  updateButtonState(buttonPopupDelete, "Удаление...");
+  deleteCard(cardId._id)
+    .then(() => {
+      selectedCard.remove();
+      closeModal(popupDelete);
+    })
+    .catch(console.log)
+    .finally(() => {
+      updateButtonState(buttonPopupDelete, "Да");
+    });
+}
+
+function launchDeleteCard(event, cardData) {
+  const selectedCard = event.target.closest(".card");
+  openModal(popupDelete);
+  buttonPopupDelete.onclick = () => handleDelete(selectedCard, cardData);
+}
+
+function updateButtonState(button, text) {
+  button.textContent = text;
 }
 
 buttonEdit.addEventListener("click", () => {
